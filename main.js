@@ -55,8 +55,22 @@ const getText3 = async() => {
     return await response.text();
 }
 
+const getText4 = async() => {
+    try{
+        const response = await fetch('./test.txt');
+        // const response = await fetch('./none.txt'); //
+        console.log(response.status); // 200
+        console.log(response.statusText); // OK
+        return await response.text();
+    } catch (error){
+        console.log(error);
+        return null;
+    }
+}
+
 const getAsyncText = async() => {
-    const result = await getText3();
+    // const result = await getText3(); // If the file is nothing, it will stop
+    const result = await getText4();
     console.log("From getAsyncText(): ");
     console.log(result); // succeeded
 }
@@ -66,5 +80,5 @@ const getAsyncText = async() => {
 // console.log(getJson()); // Promise
 // console.log(await getJson()); // Uncaught SyntaxError: missing ) after argument list
 // console.log(getAsyncJson()); // Promise
-getAsyncJson();
+// getAsyncJson();
 getAsyncText();
