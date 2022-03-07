@@ -37,17 +37,22 @@
 
 const getJson = async() => {
     const response = await fetch('./test.json');
-    const names = await response.json();
+    // const names = await response.json();
+    return await response.json();
     // console.log(names);
-    return names;
-    // logs [{ name: 'Joker'}, { name: 'Batman' }]
+    // return names;
 }
 
 const getAsyncJson = async() => {
-    return await getJson();
+    const result = await getJson();
+    console.log("From getAsyncJson(): ");
+    console.log(result); // succeeded
+    // return await getJson();
 }
 
 // getJson();
-console.log("loadNames returned: ");
+// console.log("loadNames returned: ");
 // console.log(getJson()); // Promise
-console.log(getAsyncJson()); // Promise
+// console.log(await getJson()); // Uncaught SyntaxError: missing ) after argument list
+// console.log(getAsyncJson()); // Promise
+getAsyncJson();
