@@ -50,9 +50,21 @@ const getAsyncJson = async() => {
     // return await getJson();
 }
 
+const getText3 = async() => {
+    const response = await fetch('./test.txt');
+    return await response.text();
+}
+
+const getAsyncText = async() => {
+    const result = await getText3();
+    console.log("From getAsyncText(): ");
+    console.log(result); // succeeded
+}
+
 // getJson();
 // console.log("loadNames returned: ");
 // console.log(getJson()); // Promise
 // console.log(await getJson()); // Uncaught SyntaxError: missing ) after argument list
 // console.log(getAsyncJson()); // Promise
 getAsyncJson();
+getAsyncText();
